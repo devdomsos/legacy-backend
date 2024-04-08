@@ -22,16 +22,23 @@ public class LegacyService {
             .baseUrl("https://rickandmortyapi.com/api")
             .build();
 
-    public List<Exchange_rate> getEthExchangeRate() {
+    public Exchange_rate getEthExchangeRate() {
         return Objects.requireNonNull(restClient.get()
-                        .uri("/exchangerate/ETH?filter_asset_id=USD&invert=false")
-                        .header("X-CoinAPI-Key", "APIKEY")
+                        .uri("/exchangerate/ETH/USD")
+                        .header("X-CoinAPI-Key", "F11A11C0-885D-0A68-EE4E-750164280859")
                         .retrieve()
-                        .body(CoinApiResponse.class))
-                .getAsset_id_base()
-                .getExchange_rates();
+                        .body(Exchange_rate.class));
     }
 
+
+    //getPlsExchangeRate
+    public Exchange_rate getPlsExchangeRate() {
+        return Objects.requireNonNull(restClient.get()
+                .uri("/exchangerate/PLS/USD")
+                .header("X-CoinAPI-Key", "F11A11C0-885D-0A68-EE4E-750164280859")
+                .retrieve()
+                .body(Exchange_rate.class));
+    }
 
     public List<RAndMChar> getAllRickAndMortyChars() {
         return rickRestClient.get()

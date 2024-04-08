@@ -16,10 +16,17 @@ public class LegacyController {
 
     private final LegacyService legacyService;
     // OpenAPI
-    @GetMapping("/price")
-    public void getPrices() {
-        List<Exchange_rate> pirceOfEth = legacyService.getEthExchangeRate();
+    @GetMapping("/eth/price")
+    public Exchange_rate  getETHPrices() {
+       Exchange_rate pirceOfEth = legacyService.getEthExchangeRate();
         System.out.println("Output: " + pirceOfEth);
+        return legacyService.getEthExchangeRate();
+    }
+    @GetMapping("/pls/price")
+    public Exchange_rate  getPLSPrice() {
+        Exchange_rate price = legacyService.getPlsExchangeRate();
+        System.out.println("Output: " + price);
+        return legacyService.getEthExchangeRate();
     }
     // Rick and Morty API
     @GetMapping("/chars")
