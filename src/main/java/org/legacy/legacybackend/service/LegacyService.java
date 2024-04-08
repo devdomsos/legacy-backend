@@ -55,4 +55,13 @@ public class LegacyService {
                 .body(RAndMResponse.class)
                 .getResults();
     }
+
+    public List<RAndMChar> getRickAndMortyCharsFilteredBySpecies(String species) {
+        return rickRestClient.get()
+                .uri("/character/?species="+ species  )
+                .retrieve()
+                .body(RAndMResponse.class)
+                .getResults();
+    }
+
 }

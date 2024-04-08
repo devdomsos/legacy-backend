@@ -35,4 +35,9 @@ public class LegacyController {
     public List<RAndMChar> getRickAndMortyFilteredByStatus(@RequestParam String status) {
         return legacyService.getRickAndMortyFilteredByStatus(status);
     }
+
+    @GetMapping("/species-statistic/")
+    public List<RAndMChar> getRickAndMortyCharsFilteredBySpecies(@RequestParam String species) {
+        return legacyService.getRickAndMortyCharsFilteredBySpecies(species);
+    }
 }
